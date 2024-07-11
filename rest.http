@@ -1,0 +1,46 @@
+### SITE
+GET http://localhost:3030/
+
+
+### REGISTER
+POST http://localhost:3030/api/v1/auth/register
+Content-Type: application/json
+
+{
+    "name": "nguyen10",
+    "email": "nguyen10@fpt.com",
+    "password": "123456",
+    "passwordConfirm": "123456"
+}
+
+
+### LOGIN
+POST http://localhost:3030/api/v1/auth/login
+Content-Type: application/json
+
+{
+    "email": "admin@fpt.com",
+    "password": "123456"
+}
+
+
+### LOGOUT
+DELETE http://localhost:3030/api/v1/auth/logout
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMDY4NzI2NSwiZXhwIjoxNzIwNjg3ODY1fQ.YZZ96aBFf2jEvOTLf66J6MtQe6YThsqBOxzUUO-O_dc"
+}
+
+
+### REFRESH TOKEN
+POST http://localhost:3030/api/v1/auth/refresh-token
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTY1Mzk0NWVjODA5ZDhhODkzNTQiLCJuYW1lIjoibmd1eWVuMSIsImVtYWlsIjoibmd1eWVuMUBmcHQuY29tIiwicm9sZSI6Ik1lbWJlciIsImlhdCI6MTcyMDY4NjgxNCwiZXhwIjoxNzIwNjg3NDE0fQ.C_QZpG-wDEdQiJz6ru8O0h1qVL7HAyK4_08LZs4f5MA"
+}
+
+
+### GET LIST USER BY ADMIN
+GET http://localhost:3030/api/v1/user/get-user-list

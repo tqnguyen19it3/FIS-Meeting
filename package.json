@@ -1,0 +1,27 @@
+{
+  "name": "FIS-Meeting",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "https://github.com/tqnguyen19it3/FIS-Meeting.git",
+  "author": "Ngyyyennnn <54529371+tqnguyen19it3@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "serve": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "http-errors": "^2.0.0",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.0",
+    "mongoose-delete": "^1.0.2",
+    "mongoose-paginate-v2": "^1.8.2",
+    "redis": "^3.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
