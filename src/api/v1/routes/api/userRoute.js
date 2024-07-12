@@ -8,6 +8,6 @@ const userController = require('../../controllers/userController');
 const authMiddlewares = require('../../middlewares/authMiddleware');
 
 //---------------- Routes ----------------
-router.use('/get-user-list', userController.getListUser);
+router.use('/get-user-list', [authMiddlewares.isAuthentication], userController.getListUser);
 
 module.exports = router;
