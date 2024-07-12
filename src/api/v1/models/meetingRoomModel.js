@@ -12,7 +12,8 @@ const meetingRoomSchema = new Schema({
 }, { timestamps: true });
 
 //add plugins
+// Override all methods
 meetingRoomSchema.plugin(slug);
-meetingRoomSchema.plugin(mongooseDelete, { deletedAt: true });
+meetingRoomSchema.plugin(mongooseDelete, { deletedAt: true, overrideMethods: 'all' });
 
 module.exports = mongoose.model('Meeting_Room', meetingRoomSchema);

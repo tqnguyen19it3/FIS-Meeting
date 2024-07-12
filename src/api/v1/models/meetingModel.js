@@ -17,6 +17,6 @@ const meetingSchema = new Schema({
 
 //add plugins
 meetingSchema.plugin(slug);
-meetingSchema.plugin(mongooseDelete, { deletedAt: true });
+meetingSchema.plugin(mongooseDelete, { deletedAt: true, overrideMethods: 'all' });
 
 module.exports = mongoose.model('Meeting', meetingSchema);

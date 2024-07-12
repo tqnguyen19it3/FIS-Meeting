@@ -64,4 +64,50 @@ exports.updateMeetingRoom = async (req, res, next) => {
     }
 };
 
+// [DELETE] / SOFT DELETE MEETING ROOM
+exports.softDelMeetingRoom = async (req, res, next) => {
+    try {
+        await meetingRoomService.softDeleteMeetingRoom(req.params.id);
+
+        return res.status(200).json(new ResponseWrapper('Move the meeting room to the trash successfully!', null, null, null));
+    } catch (err) {
+        next(err);
+    }
+}
+
+// [GET] / list meeting room from trash
+exports.trashMeetingRoom = async (req, res, next) => {
+    try {
+        const rooms = await meetingRoomService.getSoftDelMeetingRoom();
+        // Assume pagination
+        const pagination = new Pagination(1, 10, rooms.length);
+        return res.status(200).json(new ResponseWrapper('Get meeting room list from trash successfully!', rooms, null, pagination));
+    } catch (error) {
+        next(error);
+    }
+}
+
+// [PATCH] / Restore MeetingRoom from trash
+exports.restoreMeetingRoom = async (req, res, next) => {
+    try {
+        // update deleted field = false in mongodb from Service
+        const response = await meetingRoomService.restoreMeetingRoom(req.params.id);
+
+        return res.status(200).json(new ResponseWrapper('Restore the meeting room from the trash successfully!', response, null, null));
+    } catch (err) {
+        next(err);
+    }
+}
+
+// [DELETE] / DESTROY MEETING ROOM
+exports.destroyMeetingRoom = async (req, res, next) => {
+    try {
+        await meetingRoomService.destroyMeetingRoom(req.params.id);
+
+        return res.status(200).json(new ResponseWrapper('Destroy the meeting room from trash successfully!', null, null, null));
+    } catch (err) {
+        next(err);
+    }
+}
+
 

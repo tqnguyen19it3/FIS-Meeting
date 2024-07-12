@@ -10,6 +10,6 @@ const meetingParticipantSchema = new Schema({
 
 //add plugins
 meetingParticipantSchema.plugin(slug);
-meetingParticipantSchema.plugin(mongooseDelete, { deletedAt: true });
+meetingParticipantSchema.plugin(mongooseDelete, { deletedAt: true, overrideMethods: 'all' });
 
 module.exports = mongoose.model('Meeting_Participant', meetingParticipantSchema);

@@ -7,8 +7,8 @@ POST http://localhost:3030/api/v1/auth/register
 Content-Type: application/json
 
 {
-    "name": "nguyen10",
-    "email": "nguyen10@fpt.com",
+    "name": "nguyen11",
+    "email": "nguyen11@fpt.com",
     "password": "123456",
     "passwordConfirm": "123456"
 }
@@ -47,13 +47,13 @@ GET http://localhost:3030/api/v1/user/get-user-list
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMDY5MDE3NiwiZXhwIjoxNzIwNjkwNDc2fQ.qxtbiNvLFcf0k2C_EuXzd6HaynwsukuEOdioQzjwxH8
 
 
-### GET LIST MEETING ROOM BY ADMIN
+### GET LIST MEETING ROOM
 GET http://localhost:3030/api/v1/meeting-room/get-meeting-room-list
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMDY5MTQyOCwiZXhwIjoxNzIwNjkxNzI4fQ.vpTOUSDrX8f4Ix8QQsh2qY_2hSA-CwOviTGc6afWRLI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMDc3MDk3NywiZXhwIjoxNzIwNzgwOTc3fQ._zfWyZF7ZKvKx78KNbVFOMgHRpXhkBy9s61je5Ev42Y
 
 
 ### ADD MEETING ROOM
-POST http://localhost:3030/api/v1/meeting-room/save-meetingRoom
+POST http://localhost:3030/api/v1/meeting-room/save-meeting-room
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMDc1MjA3OSwiZXhwIjoxNzIwNzUzMDc5fQ.OEryOPSReP7pRm7as79RIqK8v6bDel5q91MI5HUpDeA
 
@@ -66,23 +66,44 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0Y
 
 
 ### UPDATE STATE MEETING ROOM
-PATCH http://localhost:3030/api/v1/meeting-room/update-state-meeting-room/668fb301b87bf2a9f3282779
+PATCH http://localhost:3030/api/v1/meeting-room/update-state-meeting-room/6690d5afa00f38479095d834
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMDc1Mzg1MywiZXhwIjoxNzIwNzYzODUzfQ.R6-jViLRNmf2pEFh8D09NNMTX7c4hVEcqFWOMuZ-jBg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMDc3MDk3NywiZXhwIjoxNzIwNzgwOTc3fQ._zfWyZF7ZKvKx78KNbVFOMgHRpXhkBy9s61je5Ev42Y
 
 {
-    "meetingRoomStatus": false
+    "meetingRoomStatus": true
 }
 
 
 ### UPDATE MEETING ROOM
-PUT http://localhost:3030/api/v1/meeting-room/update-meeting-room/668fb301b87bf2a9f3282779
+PUT http://localhost:3030/api/v1/meeting-room/update-meeting-room/6690d5afa00f38479095d834
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMDc1Mzg1MywiZXhwIjoxNzIwNzYzODUzfQ.R6-jViLRNmf2pEFh8D09NNMTX7c4hVEcqFWOMuZ-jBg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMDc3MDk3NywiZXhwIjoxNzIwNzgwOTc3fQ._zfWyZF7ZKvKx78KNbVFOMgHRpXhkBy9s61je5Ev42Y
 
 {
-    "roomName": "Phòng Họp DT",
-    "capacity": 30,
+    "roomName": "Phòng Họp TEST",
+    "capacity": 111,
     "location": "Đường số 1, tòa Nhà FPT",
-    "status": false
+    "status": true
 }
+
+
+### SOFT DELETE MEETING ROOM
+DELETE http://localhost:3030/api/v1/meeting-room/soft-delete-meeting-room/6690d5afa00f38479095d834
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMDc3MDk3NywiZXhwIjoxNzIwNzgwOTc3fQ._zfWyZF7ZKvKx78KNbVFOMgHRpXhkBy9s61je5Ev42Y
+
+
+### GET LIST MEETING ROOM FROM TRASH
+GET http://localhost:3030/api/v1/meeting-room/trash-meeting-room
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMDc3MDk3NywiZXhwIjoxNzIwNzgwOTc3fQ._zfWyZF7ZKvKx78KNbVFOMgHRpXhkBy9s61je5Ev42Y
+
+
+### RESTORE MEETING ROOM
+PATCH http://localhost:3030/api/v1/meeting-room/restore-meeting-room/6690d5afa00f38479095d834
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMDc3MDk3NywiZXhwIjoxNzIwNzgwOTc3fQ._zfWyZF7ZKvKx78KNbVFOMgHRpXhkBy9s61je5Ev42Y
+
+
+### DESTROY MEETING ROOM
+DELETE http://localhost:3030/api/v1/meeting-room/destroy-meeting-room/6690d5afa00f38479095d834
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMDc3MDk3NywiZXhwIjoxNzIwNzgwOTc3fQ._zfWyZF7ZKvKx78KNbVFOMgHRpXhkBy9s61je5Ev42Y
+
