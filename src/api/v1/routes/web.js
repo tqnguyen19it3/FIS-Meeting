@@ -2,6 +2,7 @@
 const authRoute = require('./api/authRoute');
 const userRoute = require('./api/userRoute');
 const meetingRoomRoute = require('./api/meetingRoomRoute');
+const meetingRoute = require('./api/meetingRoute');
 
 
 function initRoutes(app) {
@@ -19,6 +20,9 @@ function initRoutes(app) {
 
     //MEETING ROOM
     app.use('/api/v1/meeting-room', meetingRoomRoute);
+
+    //MEETING
+    app.use('/api/v1/meeting', meetingRoute);
 
 }
 

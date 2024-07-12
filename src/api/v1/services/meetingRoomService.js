@@ -1,6 +1,5 @@
 const createError = require('http-errors');
 const meetingRoomModel = require('../models/meetingRoomModel');
-const { ResponseWrapper, Pagination } = require('../helpers/responseWrapper');
 
 const getAllMeetingRoom = async () => {
     // chỉ lấy các room k nằm trong thùng rác
@@ -59,7 +58,7 @@ const restoreMeetingRoom = async (id) => {
     if (!room) {
         throw createError.NotFound('This meeting room could not be found in trash!');
     }
-    const rs = await meetingRoomModel.restore({ _id: id });
+    await meetingRoomModel.restore({ _id: id });
     room.deleted = false;
     return room;
 };

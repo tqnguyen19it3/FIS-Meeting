@@ -10,7 +10,7 @@ const meetingSchema = new Schema({
     department: { type: String, required: [true, "Please provide department!"] },
     startTime: {type: Date, required: true},
     endTime: { type: Date, required: true },
-    status: { type: String, default: 'Upcoming' },
+    status: { type: String, required: true, default: 'scheduled' },
     roomId: { type: Schema.Types.ObjectId, ref: 'Meeting_Room' },
     userId: { type: Schema.Types.ObjectId, ref: 'User' }
 }, { timestamps: true });
