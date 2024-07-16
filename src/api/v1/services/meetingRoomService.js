@@ -1,6 +1,14 @@
 const createError = require('http-errors');
 const meetingRoomModel = require('../models/meetingRoomModel');
 
+const checkMeetingRoomExist = async (id) => {
+    const room = await meetingRoomModel.findById(id);
+    if (!room) {
+        throw createError.NotFound('This meeting room could not be found!');
+    }
+    return true;
+}
+
 const getAllMeetingRoom = async () => {
     // chỉ lấy các room k nằm trong thùng rác
     const rooms = await meetingRoomModel.find();
@@ -17,34 +25,30 @@ const createMeetingRoom = async ({ roomName, capacity, location, status }) => {
 };
 
 const updateStateMeetingRoom = async (id, newStatus) => {
-    const room = await meetingRoomModel.findById(id);
-    if (!room) {
-        throw createError.NotFound('This meeting room could not be found!');
-    }
+    // check room exits
+    if(await checkMeetingRoomExist(id) === true){
     // update state 1 room in mongodb
-    const rs = await meetingRoomModel.findByIdAndUpdate(id, { status: newStatus }, { new: true });
-    return rs;
+        const rs = await meetingRoomModel.findByIdAndUpdate(id, { status: newStatus }, { new: true });
+        return rs;
+    }
 };
 
 const updateMeetingRoom = async (id, data) => {
     // check room exits
-    const room = await meetingRoomModel.findById(id);
-    if (!room) {
-        throw createError.NotFound('This meeting room could not be found!');
+    if(await checkMeetingRoomExist(id) === true){
+        // update a meeting room in mongodb
+        const rs = await meetingRoomModel.findOneAndUpdate({_id: id}, data, { new: true });
+        return rs;
     }
-    // update a meeting room in mongodb
-    const rs = await meetingRoomModel.findOneAndUpdate({_id: id}, data, { new: true });
-    return rs;
 };
 
 const softDeleteMeetingRoom = async (id) => {
     // check room exits
-    const room = await meetingRoomModel.findById(id);
-    if (!room) {
-        throw createError.NotFound('This meeting room could not be found!');
+    if(await checkMeetingRoomExist(id) === true){
+        // move a meeting room to trash
+        await meetingRoomModel.delete({ _id: id });
     }
-    // move a meeting room to trash
-    await meetingRoomModel.delete({ _id: id });
+   
 };
 
 const getSoftDelMeetingRoom = async () => {
@@ -69,7 +73,7 @@ const destroyMeetingRoom = async (id) => {
     if (!room) {
         throw createError.NotFound('This meeting room could not be found in trash!');
     }
-    // move a meeting room to trash
+    // destroy
     await meetingRoomModel.findOneAndDelete({ _id: id });
 };
 
@@ -81,5 +85,6 @@ module.exports = {
     softDeleteMeetingRoom,
     getSoftDelMeetingRoom,
     restoreMeetingRoom,
-    destroyMeetingRoom
+    destroyMeetingRoom,
+    checkMeetingRoomExist
 };

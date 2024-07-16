@@ -2,6 +2,9 @@
 GET http://localhost:3030/
 
 
+-------------------------------------------------------------------------------------------------
+
+
 ### REGISTER
 POST http://localhost:3030/api/v1/auth/register
 Content-Type: application/json
@@ -42,14 +45,20 @@ Content-Type: application/json
 }
 
 
+-------------------------------------------------------------------------------------------------
+
+
 ### GET LIST USER BY ADMIN
 GET http://localhost:3030/api/v1/user/get-user-list
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMDY5MDE3NiwiZXhwIjoxNzIwNjkwNDc2fQ.qxtbiNvLFcf0k2C_EuXzd6HaynwsukuEOdioQzjwxH8
 
 
+-------------------------------------------------------------------------------------------------
+
+
 ### GET LIST MEETING ROOM
 GET http://localhost:3030/api/v1/meeting-room/get-meeting-room-list
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMDc3MDk3NywiZXhwIjoxNzIwNzgwOTc3fQ._zfWyZF7ZKvKx78KNbVFOMgHRpXhkBy9s61je5Ev42Y
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTA5NTE1NCwiZXhwIjoxNzIxMTA1MTU0fQ.R5Oh8KI-YzbDDE4S4LQzMpARzguXQN1-VP1fRfTX5Y0
 
 
 ### ADD MEETING ROOM
@@ -66,9 +75,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0Y
 
 
 ### UPDATE STATE MEETING ROOM
-PATCH http://localhost:3030/api/v1/meeting-room/update-state-meeting-room/6690d5afa00f38479095d834
+PATCH http://localhost:3030/api/v1/meeting-room/update-state-meeting-room/668fb3bfb87bf2a9f328277c
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMDc3MDk3NywiZXhwIjoxNzIwNzgwOTc3fQ._zfWyZF7ZKvKx78KNbVFOMgHRpXhkBy9s61je5Ev42Y
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTA5NTE1NCwiZXhwIjoxNzIxMTA1MTU0fQ.R5Oh8KI-YzbDDE4S4LQzMpARzguXQN1-VP1fRfTX5Y0
 
 {
     "meetingRoomStatus": true
@@ -78,7 +87,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0Y
 ### UPDATE MEETING ROOM
 PUT http://localhost:3030/api/v1/meeting-room/update-meeting-room/6690d5afa00f38479095d834
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMDc3MDk3NywiZXhwIjoxNzIwNzgwOTc3fQ._zfWyZF7ZKvKx78KNbVFOMgHRpXhkBy9s61je5Ev42Y
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTA5NTE1NCwiZXhwIjoxNzIxMTA1MTU0fQ.R5Oh8KI-YzbDDE4S4LQzMpARzguXQN1-VP1fRfTX5Y0
 
 {
     "roomName": "Phòng Họp TEST",
@@ -89,21 +98,89 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0Y
 
 
 ### SOFT DELETE MEETING ROOM
-DELETE http://localhost:3030/api/v1/meeting-room/soft-delete-meeting-room/6690d5afa00f38479095d834
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMDc3MDk3NywiZXhwIjoxNzIwNzgwOTc3fQ._zfWyZF7ZKvKx78KNbVFOMgHRpXhkBy9s61je5Ev42Y
+DELETE http://localhost:3030/api/v1/meeting-room/soft-delete-meeting-room/668fb3bfb87bf2a9f328277c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTA5NTE1NCwiZXhwIjoxNzIxMTA1MTU0fQ.R5Oh8KI-YzbDDE4S4LQzMpARzguXQN1-VP1fRfTX5Y0
 
 
 ### GET LIST MEETING ROOM FROM TRASH
 GET http://localhost:3030/api/v1/meeting-room/trash-meeting-room
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMDc3MDk3NywiZXhwIjoxNzIwNzgwOTc3fQ._zfWyZF7ZKvKx78KNbVFOMgHRpXhkBy9s61je5Ev42Y
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTA5NTE1NCwiZXhwIjoxNzIxMTA1MTU0fQ.R5Oh8KI-YzbDDE4S4LQzMpARzguXQN1-VP1fRfTX5Y0
 
 
 ### RESTORE MEETING ROOM
-PATCH http://localhost:3030/api/v1/meeting-room/restore-meeting-room/6690d5afa00f38479095d834
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMDc3MDk3NywiZXhwIjoxNzIwNzgwOTc3fQ._zfWyZF7ZKvKx78KNbVFOMgHRpXhkBy9s61je5Ev42Y
+PATCH http://localhost:3030/api/v1/meeting-room/restore-meeting-room/668fb3bfb87bf2a9f328277c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTA5NTE1NCwiZXhwIjoxNzIxMTA1MTU0fQ.R5Oh8KI-YzbDDE4S4LQzMpARzguXQN1-VP1fRfTX5Y0
 
 
 ### DESTROY MEETING ROOM
 DELETE http://localhost:3030/api/v1/meeting-room/destroy-meeting-room/6690d5afa00f38479095d834
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMDc3MDk3NywiZXhwIjoxNzIwNzgwOTc3fQ._zfWyZF7ZKvKx78KNbVFOMgHRpXhkBy9s61je5Ev42Y
 
+
+-------------------------------------------------------------------------------------------------
+
+### GET LIST MEETING
+GET http://localhost:3030/api/v1/meeting/get-meeting-list
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTA5NTE1NCwiZXhwIjoxNzIxMTA1MTU0fQ.R5Oh8KI-YzbDDE4S4LQzMpARzguXQN1-VP1fRfTX5Y0
+
+
+### ADD MEETING
+POST http://localhost:3030/api/v1/meeting/save-meeting
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTA5NTE1NCwiZXhwIjoxNzIxMTA1MTU0fQ.R5Oh8KI-YzbDDE4S4LQzMpARzguXQN1-VP1fRfTX5Y0
+
+{
+    "meetingName": "meetingName",
+    "description": "description",
+    "department": "department",
+    "startTime": "2024-07-19T10:00:00Z",
+    "endTime": "2024-07-20T10:00:00Z",
+    "status": "completed",
+    "roomId": "668fb301b87bf2a9f3282779"
+}
+
+
+### UPDATE STATE MEETING
+PATCH http://localhost:3030/api/v1/meeting/update-state-meeting/6695e149c93f2a66408a67ed
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTA5NTE1NCwiZXhwIjoxNzIxMTA1MTU0fQ.R5Oh8KI-YzbDDE4S4LQzMpARzguXQN1-VP1fRfTX5Y0
+
+{
+    "status": "cancelled"
+}
+
+
+### UPDATE MEETING
+PUT http://localhost:3030/api/v1/meeting/update-meeting/6695e149c93f2a66408a67ed
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTA5NTE1NCwiZXhwIjoxNzIxMTA1MTU0fQ.R5Oh8KI-YzbDDE4S4LQzMpARzguXQN1-VP1fRfTX5Y0
+
+{
+    "meetingName": "meetingName test",
+    "description": "description test",
+    "department": "department test",
+    "startTime": "2024-07-19T10:00:00Z",
+    "endTime": "2024-07-20T10:00:00Z",
+    "status": "ongoing",
+    "roomId": "669097dac08685adafcbc0bf"
+}
+
+
+### SOFT DELETE MEETING
+DELETE http://localhost:3030/api/v1/meeting/soft-delete-meeting/6695ec4831029e22bb36d679
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTA5NTE1NCwiZXhwIjoxNzIxMTA1MTU0fQ.R5Oh8KI-YzbDDE4S4LQzMpARzguXQN1-VP1fRfTX5Y0
+
+
+### GET LIST MEETING FROM TRASH
+GET http://localhost:3030/api/v1/meeting/trash-meeting
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTA5NTE1NCwiZXhwIjoxNzIxMTA1MTU0fQ.R5Oh8KI-YzbDDE4S4LQzMpARzguXQN1-VP1fRfTX5Y0
+
+
+### RESTORE MEETING
+PATCH http://localhost:3030/api/v1/meeting/restore-meeting/6695e149c93f2a66408a67ed
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTA5NTE1NCwiZXhwIjoxNzIxMTA1MTU0fQ.R5Oh8KI-YzbDDE4S4LQzMpARzguXQN1-VP1fRfTX5Y0
+
+
+### DESTROY MEETING ROOM
+DELETE http://localhost:3030/api/v1/meeting/destroy-meeting/6695ec4831029e22bb36d679
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTA5NTE1NCwiZXhwIjoxNzIxMTA1MTU0fQ.R5Oh8KI-YzbDDE4S4LQzMpARzguXQN1-VP1fRfTX5Y0
