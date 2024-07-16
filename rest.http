@@ -54,7 +54,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0Y
 
 
 ### GET USER BY ID
-GET http://localhost:3030/api/v1/user/get-user/668f944bdfdf1423c659106
+GET http://localhost:3030/api/v1/user/get-user/668f9609c2df07ed87613ab3
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTExMTg1OCwiZXhwIjoxNzIxMTIxODU4fQ.8JKG4Z9pm5RkV4kC2xEYea1qYCMgAPvqrFtFMaDOYMw
 
 
@@ -135,7 +135,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0Y
 
 
 ### GET MEETING BY ID
-GET http://localhost:3030/api/v1/meeting/get-meeting/6696004d4f63b778af0bd106
+GET http://localhost:3030/api/v1/meeting/get-meeting/66961f55c39f730d4c125912
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTExMTg1OCwiZXhwIjoxNzIxMTIxODU4fQ.8JKG4Z9pm5RkV4kC2xEYea1qYCMgAPvqrFtFMaDOYMw
 
 
@@ -161,14 +161,14 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTExMTg1OCwiZXhwIjoxNzIxMTIxODU4fQ.8JKG4Z9pm5RkV4kC2xEYea1qYCMgAPvqrFtFMaDOYMw
 
 {
-    "meetingName": "meetingName4",
-    "description": "description4",
-    "department": "department4",
+    "meetingName": "tests mn",
+    "description": "test desc",
+    "department": "test dp",
     "startTime": "2024-07-19T10:00:00Z",
     "endTime": "2024-07-20T10:00:00Z",
     "status": "scheduled",
-    "roomId": "668fb3bfb87bf2a9f328277c",
-    "participantIDs": ["60f7c8d5f1a4e200c8e4e7a3", "60f7c8e0f1a4e200c8e4e7a4", "60f7c8e0f1a4e200c8e4e7a5"]
+    "roomId": "668fb301b87bf2a9f3282779",
+    "participantIDs": ["668f9671945ec809d8a89358", "668f9653945ec809d8a89354", "668f967b945ec809d8a8935b"]
 }
 
 

@@ -49,16 +49,12 @@ exports.createMeetingWithParticipants = async (req, res, next) => {
     try {
         const { participantIDs, ...meetingData } = req.body;
         // validate all fields
-        
         const { error } = meetingValidate(meetingData);
         if(error){
             throw createError(error.details[0].message);
         }
         const meetingWithParticipants = await meetingService.createMeetingWithParticipants(req.payload._id, meetingData, participantIDs);
 
-        //send mail participants
-        
-       
         return res.status(200).json(new ResponseWrapper('Create meeting Successfully!', meetingWithParticipants, null, null));
 
     } catch (error) {

@@ -3,6 +3,7 @@ const meetingModel = require('../models/meetingModel');
 const meetingRoomService = require('../services/meetingRoomService');
 const userService = require('../services/userService');
 const meetingParticipantModel = require('../models/meetingParticipantModel');
+const { sendMailToMetingParticipant } = require('../helpers/sendMail');
 
 
 const addParticipantsToTheMeeting = async (meetingId, participantIDs) => {
@@ -62,6 +63,20 @@ const createMeetingWithParticipants = async (userId, meetingData, participantIDs
 
     // Add participants to the meeting
     await addParticipantsToTheMeeting(meeting._id, participantIDs);
+
+    const meetingInfo = await getMeetingById(meeting._id);
+
+    // Gửi email cho từng người tham gia
+    const emailPromises = meetingInfo.participants.map(participant => {
+        return sendMailToMetingParticipant(
+            participant.email,
+            meetingInfo,
+            "Meeting",
+            `<p>You have been invited to a meeting!</p>`
+        );
+    });
+
+    await Promise.all(emailPromises);
 
     // Convert meeting to a plain JavaScript object
     const meetingObject = meeting.toObject();
