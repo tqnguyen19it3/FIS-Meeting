@@ -15,6 +15,16 @@ exports.allMeeting = async (req, res, next) => {
     }
 }
 
+// [GET] / get meeting by id
+exports.getMeetingById = async (req, res, next) => {
+    try {
+        const meeting = await meetingService.getMeetingById(req.params.id);
+        return res.status(200).json(new ResponseWrapper('Get meeting by ID successfully!', meeting, null, null));
+    } catch (error) {
+        next(error);
+    }
+}
+
 // [POST] / add meeting
 exports.saveMeeting = async (req, res, next) => {
     try {
@@ -28,6 +38,28 @@ exports.saveMeeting = async (req, res, next) => {
         const meeting = await meetingService.createMeeting(req.payload._id, { ...req.body });
        
         return res.status(200).json(new ResponseWrapper('Create meeting Successfully!', meeting, null, null));
+
+    } catch (error) {
+        next(error);
+    }
+}
+
+// [POST] / create meeting with participant
+exports.createMeetingWithParticipants = async (req, res, next) => {
+    try {
+        const { participantIDs, ...meetingData } = req.body;
+        // validate all fields
+        
+        const { error } = meetingValidate(meetingData);
+        if(error){
+            throw createError(error.details[0].message);
+        }
+        const meetingWithParticipants = await meetingService.createMeetingWithParticipants(req.payload._id, meetingData, participantIDs);
+
+        //send mail participants
+        
+       
+        return res.status(200).json(new ResponseWrapper('Create meeting Successfully!', meetingWithParticipants, null, null));
 
     } catch (error) {
         next(error);

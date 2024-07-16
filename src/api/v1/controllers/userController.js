@@ -12,3 +12,13 @@ exports.getListUser = async (req, res, next) => {
         next(error);
     }
 }
+
+// [GET] / get user by id
+exports.getUserById = async (req, res, next) => {
+    try {
+        const user = await userService.getUserById(req.params.id);
+        return res.status(200).json(new ResponseWrapper('Get user by ID successfully!', user, null, null));
+    } catch (error) {
+        next(error);
+    }
+}

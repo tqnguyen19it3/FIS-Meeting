@@ -48,9 +48,14 @@ Content-Type: application/json
 -------------------------------------------------------------------------------------------------
 
 
-### GET LIST USER BY ADMIN
+### GET LIST USER
 GET http://localhost:3030/api/v1/user/get-user-list
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMDY5MDE3NiwiZXhwIjoxNzIwNjkwNDc2fQ.qxtbiNvLFcf0k2C_EuXzd6HaynwsukuEOdioQzjwxH8
+
+
+### GET USER BY ID
+GET http://localhost:3030/api/v1/user/get-user/668f944bdfdf1423c659106
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTExMTg1OCwiZXhwIjoxNzIxMTIxODU4fQ.8JKG4Z9pm5RkV4kC2xEYea1qYCMgAPvqrFtFMaDOYMw
 
 
 -------------------------------------------------------------------------------------------------
@@ -59,6 +64,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0Y
 ### GET LIST MEETING ROOM
 GET http://localhost:3030/api/v1/meeting-room/get-meeting-room-list
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTA5NTE1NCwiZXhwIjoxNzIxMTA1MTU0fQ.R5Oh8KI-YzbDDE4S4LQzMpARzguXQN1-VP1fRfTX5Y0
+
+
+### GET MEETING ROOM BY ID
+GET http://localhost:3030/api/v1/meeting-room/get-meeting-room/668fb301b87bf2a9f3282779
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTExMTg1OCwiZXhwIjoxNzIxMTIxODU4fQ.8JKG4Z9pm5RkV4kC2xEYea1qYCMgAPvqrFtFMaDOYMw
 
 
 ### ADD MEETING ROOM
@@ -104,12 +114,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0Y
 
 ### GET LIST MEETING ROOM FROM TRASH
 GET http://localhost:3030/api/v1/meeting-room/trash-meeting-room
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTA5NTE1NCwiZXhwIjoxNzIxMTA1MTU0fQ.R5Oh8KI-YzbDDE4S4LQzMpARzguXQN1-VP1fRfTX5Y0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTExMTg1OCwiZXhwIjoxNzIxMTIxODU4fQ.8JKG4Z9pm5RkV4kC2xEYea1qYCMgAPvqrFtFMaDOYMw
 
 
 ### RESTORE MEETING ROOM
 PATCH http://localhost:3030/api/v1/meeting-room/restore-meeting-room/668fb3bfb87bf2a9f328277c
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTA5NTE1NCwiZXhwIjoxNzIxMTA1MTU0fQ.R5Oh8KI-YzbDDE4S4LQzMpARzguXQN1-VP1fRfTX5Y0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTExMTg1OCwiZXhwIjoxNzIxMTIxODU4fQ.8JKG4Z9pm5RkV4kC2xEYea1qYCMgAPvqrFtFMaDOYMw
 
 
 ### DESTROY MEETING ROOM
@@ -124,7 +134,12 @@ GET http://localhost:3030/api/v1/meeting/get-meeting-list
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTA5NTE1NCwiZXhwIjoxNzIxMTA1MTU0fQ.R5Oh8KI-YzbDDE4S4LQzMpARzguXQN1-VP1fRfTX5Y0
 
 
-### ADD MEETING
+### GET MEETING BY ID
+GET http://localhost:3030/api/v1/meeting/get-meeting/6696004d4f63b778af0bd106
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTExMTg1OCwiZXhwIjoxNzIxMTIxODU4fQ.8JKG4Z9pm5RkV4kC2xEYea1qYCMgAPvqrFtFMaDOYMw
+
+
+### CREATE MEETING WITHOUT PARTICIPANTS
 POST http://localhost:3030/api/v1/meeting/save-meeting
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTA5NTE1NCwiZXhwIjoxNzIxMTA1MTU0fQ.R5Oh8KI-YzbDDE4S4LQzMpARzguXQN1-VP1fRfTX5Y0
@@ -137,6 +152,23 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0Y
     "endTime": "2024-07-20T10:00:00Z",
     "status": "completed",
     "roomId": "668fb301b87bf2a9f3282779"
+}
+
+
+### CREATE MEETING WITH PARTICIPANTS
+POST http://localhost:3030/api/v1/meeting/create-meeting-with-participants
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTExMTg1OCwiZXhwIjoxNzIxMTIxODU4fQ.8JKG4Z9pm5RkV4kC2xEYea1qYCMgAPvqrFtFMaDOYMw
+
+{
+    "meetingName": "meetingName4",
+    "description": "description4",
+    "department": "department4",
+    "startTime": "2024-07-19T10:00:00Z",
+    "endTime": "2024-07-20T10:00:00Z",
+    "status": "scheduled",
+    "roomId": "668fb3bfb87bf2a9f328277c",
+    "participantIDs": ["60f7c8d5f1a4e200c8e4e7a3", "60f7c8e0f1a4e200c8e4e7a4", "60f7c8e0f1a4e200c8e4e7a5"]
 }
 
 
@@ -167,13 +199,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0Y
 
 
 ### SOFT DELETE MEETING
-DELETE http://localhost:3030/api/v1/meeting/soft-delete-meeting/6695ec4831029e22bb36d679
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTA5NTE1NCwiZXhwIjoxNzIxMTA1MTU0fQ.R5Oh8KI-YzbDDE4S4LQzMpARzguXQN1-VP1fRfTX5Y0
+DELETE http://localhost:3030/api/v1/meeting/soft-delete-meeting/6695e149c93f2a66408a67ed
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTExMTg1OCwiZXhwIjoxNzIxMTIxODU4fQ.8JKG4Z9pm5RkV4kC2xEYea1qYCMgAPvqrFtFMaDOYMw
 
 
 ### GET LIST MEETING FROM TRASH
 GET http://localhost:3030/api/v1/meeting/trash-meeting
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTA5NTE1NCwiZXhwIjoxNzIxMTA1MTU0fQ.R5Oh8KI-YzbDDE4S4LQzMpARzguXQN1-VP1fRfTX5Y0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTExMTg1OCwiZXhwIjoxNzIxMTIxODU4fQ.8JKG4Z9pm5RkV4kC2xEYea1qYCMgAPvqrFtFMaDOYMw
 
 
 ### RESTORE MEETING

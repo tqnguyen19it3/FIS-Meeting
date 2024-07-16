@@ -15,6 +15,17 @@ exports.allMeetingRoom = async (req, res, next) => {
     }
 }
 
+// [GET] / get meeting room by id
+exports.getMeetingRoomById = async (req, res, next) => {
+    try {
+        const room = await meetingRoomService.getMeetingRoomById(req.params.id);
+        // Assume pagination
+        return res.status(200).json(new ResponseWrapper('Get meeting room by id successfully!', room, null, null));
+    } catch (error) {
+        next(error);
+    }
+}
+
 // [POST] / add meeting room
 exports.saveMeetingRoom = async (req, res, next) => {
     try {

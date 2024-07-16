@@ -10,6 +10,7 @@ const authMiddlewares = require('../../middlewares/authMiddleware');
 // //---------------- Routes ----------------
 router.post('/save-meeting-room', [authMiddlewares.isAuthentication], meetingRoomController.saveMeetingRoom);
 router.get('/get-meeting-room-list', [authMiddlewares.isAuthentication], meetingRoomController.allMeetingRoom);
+router.get('/get-meeting-room/:id', [authMiddlewares.isAuthentication], meetingRoomController.getMeetingRoomById);
 router.patch('/update-state-meeting-room/:id', [authMiddlewares.isAuthentication], meetingRoomController.updateStateMeetingRoom);
 router.put('/update-meeting-room/:id', [authMiddlewares.isAuthentication], meetingRoomController.updateMeetingRoom);
 router.delete('/soft-delete-meeting-room/:id', [authMiddlewares.isAuthentication], meetingRoomController.softDelMeetingRoom);
