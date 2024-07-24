@@ -46,16 +46,28 @@ const getAllMeeting = async () => {
     return meetings;
 };
 
+const getMeetingByWeek = async (startDate, endDate) => {
+    // Truy vấn các cuộc họp trong khoảng thời gian cụ thể
+    const meetings = await meetingModel.find({
+        $or: [
+            { startTime: { $gte: startDate, $lte: endDate } },  // Cuộc họp bắt đầu trong khoảng thời gian
+            { endTime: { $gte: startDate, $lte: endDate } },    // Cuộc họp kết thúc trong khoảng thời gian
+            { startTime: { $lte: startDate }, endTime: { $gte: endDate } }  // Cuộc họp bao trùm toàn bộ khoảng thời gian
+        ]
+    }).sort({ startTime: 1 });
+
+    return meetings;
+};
+
 //create meeting without participants
 const createMeeting = async (authorId, data) => {
     const meetingRoom = await meetingRoomService.getMeetingRoomById(data.roomId);
     const author = await userService.getUserById(authorId);
     
     if(meetingRoom.status && author){
-
         // Truy vấn các cuộc họp khác trong cùng phòng họp có xung đột thời gian
         const conflictingMeetings = await meetingModel.find({
-            roomId: data.roomId, //phong hop
+            // roomId: data.roomId, //phong hop
             $or: [ //time
                 { startTime: { $lt: data.endTime, $gt: data.startTime } },
                 { endTime: { $lt: data.endTime, $gt: data.startTime } },
@@ -166,5 +178,6 @@ module.exports = {
     getSoftDelMeeting,
     restoreMeeting,
     destroyMeeting,
-    getMeetingById
+    getMeetingById,
+    getMeetingByWeek
 }

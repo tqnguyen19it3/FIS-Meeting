@@ -15,6 +15,19 @@ exports.allMeeting = async (req, res, next) => {
     }
 }
 
+// [GET] / get meeting list by week
+exports.allMeetingByWeek = async (req, res, next) => {
+    try {
+        const { startDate, endDate } = req.query;
+        const meetings = await meetingService.getMeetingByWeek(startDate, endDate);
+        // Assume pagination
+        const pagination = new Pagination(1, 10, meetings.length);
+        return res.status(200).json(new ResponseWrapper('Get meeting list successfully!', meetings, null, pagination));
+    } catch (error) {
+        next(error);
+    }
+}
+
 // [GET] / get meeting by id
 exports.getMeetingById = async (req, res, next) => {
     try {
