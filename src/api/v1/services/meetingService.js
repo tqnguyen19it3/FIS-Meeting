@@ -42,17 +42,37 @@ const getMeetingById = async (id) => {
 }
 
 const getAllMeeting = async () => {
-    const meetings = await meetingModel.find();
+    const meetings = await meetingModel.find().sort({ startTime: 1 });
     return meetings;
 };
 
 //create meeting without participants
-const createMeeting = async (userId, data) => {
-    if(await meetingRoomService.getMeetingRoomById(data.roomId) && await userService.getUserById(userId)){
-        data.userId = userId;
-        // store 1 meeting in mongodb
-        const meeting = await meetingModel.create(data);
-        return meeting;
+const createMeeting = async (authorId, data) => {
+    const meetingRoom = await meetingRoomService.getMeetingRoomById(data.roomId);
+    const author = await userService.getUserById(authorId);
+    
+    if(meetingRoom.status && author){
+
+        // Truy vấn các cuộc họp khác trong cùng phòng họp có xung đột thời gian
+        const conflictingMeetings = await meetingModel.find({
+            roomId: data.roomId, //phong hop
+            $or: [ //time
+                { startTime: { $lt: data.endTime, $gt: data.startTime } },
+                { endTime: { $lt: data.endTime, $gt: data.startTime } },
+                { startTime: { $lte: data.startTime }, endTime: { $gte: data.endTime } }
+            ]
+        });
+
+        // Nếu không có cuộc họp nào xung đột, tạo cuộc họp mới
+        if (conflictingMeetings.length === 0) {
+            data.userId = authorId;
+            const meeting = await meetingModel.create(data);
+            return meeting;
+        } else {
+            throw createError.Conflict("Meeting time conflicts with existing meetings");
+        }
+    } else {
+        throw createError.NotFound('Meeting Room or user could not be found!');
     }
 };
 

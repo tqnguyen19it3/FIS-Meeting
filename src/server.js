@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const connectMongoDB = require('./config/db/mongodb');
 const createError = require('http-errors');
 const errorHandler = require('./api/v1/helpers/errorHandler');
@@ -12,6 +13,10 @@ const DBConnectionString = process.env.DB_CONNECTION_STRING;
 
 //---------------- CONNECT DB ----------------
 connectMongoDB(DBConnectionString);
+
+
+//handle cors error
+app.use(cors());
 
 
 //---------------- MIDDLEWARE GET INFO FROM CLIENT BY REQ.BODY ----------------

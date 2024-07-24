@@ -130,13 +130,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0Y
 -------------------------------------------------------------------------------------------------
 
 ### GET LIST MEETING
-GET http://localhost:3030/api/v1/meeting/get-meeting-list
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTA5NTE1NCwiZXhwIjoxNzIxMTA1MTU0fQ.R5Oh8KI-YzbDDE4S4LQzMpARzguXQN1-VP1fRfTX5Y0
+GET http://localhost:3030/api/v1/meeting/get-       
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTM1NjMyMSwiZXhwIjoxNzIxMzY2MzIxfQ.9oIjMY40j1-MrYfuIVYdHu6GnyR-wt5Cv4S8TO5qyes
 
 
 ### GET MEETING BY ID
-GET http://localhost:3030/api/v1/meeting/get-meeting/66961f55c39f730d4c125912
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTExMTg1OCwiZXhwIjoxNzIxMTIxODU4fQ.8JKG4Z9pm5RkV4kC2xEYea1qYCMgAPvqrFtFMaDOYMw
+GET http://localhost:3030/api/v1/meeting/get-meeting/669f8315a12bccf4f671446a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTM1NjMyMSwiZXhwIjoxNzIxMzY2MzIxfQ.9oIjMY40j1-MrYfuIVYdHu6GnyR-wt5Cv4S8TO5qyes
 
 
 ### CREATE MEETING WITHOUT PARTICIPANTS
@@ -148,8 +148,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0Y
     "meetingName": "meetingName",
     "description": "description",
     "department": "department",
-    "startTime": "2024-07-19T10:00:00Z",
-    "endTime": "2024-07-20T10:00:00Z",
+    "startTime": "2024-07-19T07:00:00Z",
+    "endTime": "2024-07-19T10:00:00Z",
     "status": "completed",
     "roomId": "668fb301b87bf2a9f3282779"
 }
@@ -158,16 +158,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0Y
 ### CREATE MEETING WITH PARTICIPANTS
 POST http://localhost:3030/api/v1/meeting/create-meeting-with-participants
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTExMTg1OCwiZXhwIjoxNzIxMTIxODU4fQ.8JKG4Z9pm5RkV4kC2xEYea1qYCMgAPvqrFtFMaDOYMw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTM3MDc3MSwiZXhwIjoxNzIxMzgwNzcxfQ.ieaXJ8sPlZOWC3bYFPuCU-w3WjRJpPqRl_xI37ZgwnU
 
 {
-    "meetingName": "tests mn",
-    "description": "test desc",
-    "department": "test dp",
-    "startTime": "2024-07-19T10:00:00Z",
-    "endTime": "2024-07-20T10:00:00Z",
+    "meetingName": "meetingName",
+    "description": "description",
+    "department": "department",
+    "startTime": "2024-07-24T08:00:00Z",
+    "endTime": "2024-07-24T09:00:00Z",
     "status": "scheduled",
-    "roomId": "668fb301b87bf2a9f3282779",
+    "roomId": "668fb3bfb87bf2a9f328277c",
     "participantIDs": ["668f9671945ec809d8a89358", "668f9653945ec809d8a89354", "668f967b945ec809d8a8935b"]
 }
 

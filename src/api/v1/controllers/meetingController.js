@@ -53,7 +53,9 @@ exports.createMeetingWithParticipants = async (req, res, next) => {
         if(error){
             throw createError(error.details[0].message);
         }
-        const meetingWithParticipants = await meetingService.createMeetingWithParticipants(req.payload._id, meetingData, participantIDs);
+        // const author = req.payload._id //nguoi tao meeting
+        const author = '668f944bdfdf1423c659106d'; //admin
+        const meetingWithParticipants = await meetingService.createMeetingWithParticipants(author, meetingData, participantIDs);
 
         return res.status(200).json(new ResponseWrapper('Create meeting Successfully!', meetingWithParticipants, null, null));
 
