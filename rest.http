@@ -144,6 +144,11 @@ GET http://localhost:3030/api/v1/meeting/get-meeting-list-by-week?startDate=2024
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTM1NjMyMSwiZXhwIjoxNzIxMzY2MzIxfQ.9oIjMY40j1-MrYfuIVYdHu6GnyR-wt5Cv4S8TO5qyes
 
 
+### GET MEETING BY DAY
+GET http://localhost:3030/api/v1/meeting/get-meeting-list-by-day?date=2024-07-26T00:00:00.000Z
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTM1NjMyMSwiZXhwIjoxNzIxMzY2MzIxfQ.9oIjMY40j1-MrYfuIVYdHu6GnyR-wt5Cv4S8TO5qyes
+
+
 ### CREATE MEETING WITHOUT PARTICIPANTS
 POST http://localhost:3030/api/v1/meeting/save-meeting
 Content-Type: application/json

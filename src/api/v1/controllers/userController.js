@@ -7,7 +7,7 @@ exports.getListUser = async (req, res, next) => {
         const users = await userService.getAllUser();
         // Assume pagination
         const pagination = new Pagination(1, 10, users.length);
-        return res.status(200).json(new ResponseWrapper('Get user list successfully!', users, null, pagination));
+        return res.status(200).json(new ResponseWrapper('Lấy danh sách người dùng thành công!', users, null, pagination));
     } catch (error) {
         next(error);
     }
@@ -17,7 +17,7 @@ exports.getListUser = async (req, res, next) => {
 exports.getUserById = async (req, res, next) => {
     try {
         const user = await userService.getUserById(req.params.id);
-        return res.status(200).json(new ResponseWrapper('Get user by ID successfully!', user, null, null));
+        return res.status(200).json(new ResponseWrapper('Lấy người dùng theo ID thành công!', user, null, null));
     } catch (error) {
         next(error);
     }

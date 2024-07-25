@@ -7,7 +7,7 @@ const createUser = async ({ name, email, password }) => {
     // check email exits
     const existingUser = await userModel.findOne({ email });
     if (existingUser) {
-        throw createError.Conflict(`Register Failed! ${email} already exists`);
+        throw createError.Conflict(`Đăng ký thất bại! ${email} đã tồn tại`);
     }
     const hashPassword = await genHash.genHashPassword(password);
     // store 1 user in mongodb
@@ -28,7 +28,7 @@ const loginUser = async ({ email, password }) => {
     //check user exits
     const user = await userModel.findOne({ email });
     if(!user){
-        throw createError.NotFound(`Login Failed! ${email} not registered`);
+        throw createError.NotFound(`Đăng nhập thất bại! ${email} chưa được đăng ký`);
     }
     //check password
     const isPassValid = bcrypt.compareSync(password, user.password);

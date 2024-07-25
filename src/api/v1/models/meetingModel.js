@@ -4,10 +4,10 @@ const slug = require('mongoose-slug-updater');
 const mongooseDelete = require('mongoose-delete');
 
 const meetingSchema = new Schema({
-    meetingName: { type: String, required: [true, "Please provide a meeting name!"] },
+    meetingName: { type: String, required: [true, "Vui lòng cung cấp tên cuộc họp!"] },
     slug: { type: String, slug: 'meetingName', unique: true },
-    description: { type: String, required: [true, "Please provide description!"] },
-    department: { type: String, required: [true, "Please provide department!"] },
+    description: { type: String, required: [true, "Vui lòng cung cấp mô tả cuộc họp!"] },
+    department: { type: String, required: [true, "Vui lòng cung cấp phòng ban của bạn!"] },
     startTime: {type: Date, required: true},
     endTime: { type: Date, required: true },
     status: { type: String, required: true, default: 'scheduled' },

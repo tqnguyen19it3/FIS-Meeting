@@ -4,7 +4,7 @@ const meetingRoomModel = require('../models/meetingRoomModel');
 const getMeetingRoomById = async (id) => {
     const room = await meetingRoomModel.findById(id);
     if (!room) {
-        throw createError.NotFound('This meeting room could not be found!');
+        throw createError.NotFound('Không tìm thấy phòng họp này!');
     }
     return room;
 }
@@ -60,7 +60,7 @@ const getSoftDelMeetingRoom = async () => {
 const restoreMeetingRoom = async (id) => {
     const room = await meetingRoomModel.findOneWithDeleted({ _id: id, deleted: true });
     if (!room) {
-        throw createError.NotFound('This meeting room could not be found in trash!');
+        throw createError.NotFound('Không tìm thấy phòng họp này trong thùng rác!');
     }
     await meetingRoomModel.restore({ _id: id });
     room.deleted = false;
@@ -71,7 +71,7 @@ const destroyMeetingRoom = async (id) => {
     // check room exits
     const room = await meetingRoomModel.findOneWithDeleted({ _id: id, deleted: true });
     if (!room) {
-        throw createError.NotFound('This meeting room could not be found in trash!');
+        throw createError.NotFound('Không tìm thấy phòng họp này trong thùng rác!');
     }
     // destroy
     await meetingRoomModel.findOneAndDelete({ _id: id });

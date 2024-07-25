@@ -1,4 +1,5 @@
 const createError = require('http-errors');
+const moment = require('moment');
 const meetingModel = require('../models/meetingModel');
 const meetingRoomService = require('../services/meetingRoomService');
 const userService = require('../services/userService');
@@ -27,7 +28,7 @@ const getMeetingById = async (id) => {
                         .populate('roomId', 'roomName capacity location status deleted')
                         .exec();
     if (!meeting) {
-        throw createError.NotFound('This meeting could not be found!');
+        throw createError.NotFound('Không tìm thấy cuộc họp này!');
     }
     // Lấy thông tin người tham gia từ bảng MeetingParticipants
     const participants = await meetingParticipantModel.find({ meetingId: id })
@@ -59,6 +60,18 @@ const getMeetingByWeek = async (startDate, endDate) => {
     return meetings;
 };
 
+const getMeetingByDay = async (date) => {
+    // Truy vấn các cuộc họp trong ngày cụ thể
+    const startOfDay = moment(date).startOf('day').toDate();
+    const endOfDay = moment(date).endOf('day').toDate();
+
+    const meetings = await meetingModel.find({
+      startTime: { $gte: startOfDay, $lte: endOfDay },
+    }).sort({ startTime: 1 });
+
+    return meetings;
+};
+
 //create meeting without participants
 const createMeeting = async (authorId, data) => {
     const meetingRoom = await meetingRoomService.getMeetingRoomById(data.roomId);
@@ -81,10 +94,10 @@ const createMeeting = async (authorId, data) => {
             const meeting = await meetingModel.create(data);
             return meeting;
         } else {
-            throw createError.Conflict("Meeting time conflicts with existing meetings");
+            throw createError.Conflict("Thời gian họp xung đột với các cuộc họp hiện có");
         }
     } else {
-        throw createError.NotFound('Meeting Room or user could not be found!');
+        throw createError.NotFound('Có gì đó không ổn!');
     }
 };
 
@@ -104,7 +117,7 @@ const createMeetingWithParticipants = async (userId, meetingData, participantIDs
             participant.email,
             meetingInfo,
             "Meeting",
-            `<p>You have been invited to a meeting!</p>`
+            `<p>Bạn đã được mời đến một cuộc họp!</p>`
         );
     });
 
@@ -151,7 +164,7 @@ const getSoftDelMeeting = async () => {
 const restoreMeeting = async (id) => {
     const meet = await meetingModel.findOneWithDeleted({ _id: id, deleted: true });
     if (!meet) {
-        throw createError.NotFound('This meeting could not be found in trash!');
+        throw createError.NotFound('Không tìm thấy cuộc họp này trong thùng rác!');
     }
     await meetingModel.restore({ _id: id });
     meet.deleted = false;
@@ -162,7 +175,7 @@ const destroyMeeting = async (id) => {
     // check meeting exits
     const meeting = await meetingModel.findOneWithDeleted({ _id: id, deleted: true });
     if (!meeting) {
-        throw createError.NotFound('This meeting could not be found in trash!');
+        throw createError.NotFound('Không tìm thấy cuộc họp này trong thùng rác!');
     }
     // destroy
     await meetingModel.findOneAndDelete({ _id: id });
@@ -179,5 +192,6 @@ module.exports = {
     restoreMeeting,
     destroyMeeting,
     getMeetingById,
-    getMeetingByWeek
+    getMeetingByWeek,
+    getMeetingByDay
 }

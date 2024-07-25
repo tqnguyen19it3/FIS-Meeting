@@ -9,7 +9,7 @@ exports.allMeetingRoom = async (req, res, next) => {
         const rooms = await meetingRoomService.getAllMeetingRoom();
         // Assume pagination
         const pagination = new Pagination(1, 10, rooms.length);
-        return res.status(200).json(new ResponseWrapper('Get meeting room list successfully!', rooms, null, pagination));
+        return res.status(200).json(new ResponseWrapper('Lấy danh sách phòng họp thành công!', rooms, null, pagination));
     } catch (error) {
         next(error);
     }
@@ -20,7 +20,7 @@ exports.getMeetingRoomById = async (req, res, next) => {
     try {
         const room = await meetingRoomService.getMeetingRoomById(req.params.id);
         // Assume pagination
-        return res.status(200).json(new ResponseWrapper('Get meeting room by id successfully!', room, null, null));
+        return res.status(200).json(new ResponseWrapper('Lấy chi tiết cuộc họp thành công!', room, null, null));
     } catch (error) {
         next(error);
     }
@@ -40,7 +40,7 @@ exports.saveMeetingRoom = async (req, res, next) => {
         // store 1 meeting room in mongodb from Service
         const meetingRoom = await meetingRoomService.createMeetingRoom({ roomName, capacity, location, status });
        
-        return res.status(200).json(new ResponseWrapper('Add meeting room Successfully!', meetingRoom, null, null));
+        return res.status(200).json(new ResponseWrapper('Thêm phòng họp thành công!', meetingRoom, null, null));
 
     } catch (error) {
         next(error);
@@ -53,7 +53,7 @@ exports.updateStateMeetingRoom = async (req, res, next) => {
         // update state 1 meeting room in mongodb from Service
         const response = await meetingRoomService.updateStateMeetingRoom(req.params.id, req.body.meetingRoomStatus);
 
-        return res.status(200).json(new ResponseWrapper('Update meeting room state successfully!', response, null, null));
+        return res.status(200).json(new ResponseWrapper('Cập nhật trạng thái phòng họp thành công!', response, null, null));
     } catch (err) {
         next(err);
     }
@@ -69,7 +69,7 @@ exports.updateMeetingRoom = async (req, res, next) => {
         // update a meeting room in mongodb from Service
         const response = await meetingRoomService.updateMeetingRoom(req.params.id, req.body);
 
-        return res.status(200).json(new ResponseWrapper('Update meeting room successfully!', response, null, null));
+        return res.status(200).json(new ResponseWrapper('Cập nhật phòng họp thành công!', response, null, null));
     } catch (error) {
         next(error);
     }
@@ -80,7 +80,7 @@ exports.softDelMeetingRoom = async (req, res, next) => {
     try {
         await meetingRoomService.softDeleteMeetingRoom(req.params.id);
 
-        return res.status(200).json(new ResponseWrapper('Move the meeting room to the trash successfully!', null, null, null));
+        return res.status(200).json(new ResponseWrapper('Bạn đã di chuyển phòng họp này vào thùng rác!', null, null, null));
     } catch (err) {
         next(err);
     }
@@ -92,7 +92,7 @@ exports.trashMeetingRoom = async (req, res, next) => {
         const rooms = await meetingRoomService.getSoftDelMeetingRoom();
         // Assume pagination
         const pagination = new Pagination(1, 10, rooms.length);
-        return res.status(200).json(new ResponseWrapper('Get meeting room list from trash successfully!', rooms, null, pagination));
+        return res.status(200).json(new ResponseWrapper('Lấy danh sách phòng họp từ thùng rác thành công!', rooms, null, pagination));
     } catch (error) {
         next(error);
     }
@@ -104,7 +104,7 @@ exports.restoreMeetingRoom = async (req, res, next) => {
         // update deleted field = false in mongodb from Service
         const response = await meetingRoomService.restoreMeetingRoom(req.params.id);
 
-        return res.status(200).json(new ResponseWrapper('Restore the meeting room from the trash successfully!', response, null, null));
+        return res.status(200).json(new ResponseWrapper('Khôi phục thành công phòng họp', response, null, null));
     } catch (err) {
         next(err);
     }
@@ -115,7 +115,7 @@ exports.destroyMeetingRoom = async (req, res, next) => {
     try {
         await meetingRoomService.destroyMeetingRoom(req.params.id);
 
-        return res.status(200).json(new ResponseWrapper('Destroy the meeting room from trash successfully!', null, null, null));
+        return res.status(200).json(new ResponseWrapper('Xóa bỏ thành công phòng họp!', null, null, null));
     } catch (err) {
         next(err);
     }

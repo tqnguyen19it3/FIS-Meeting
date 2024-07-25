@@ -20,7 +20,7 @@ exports.register = async (req, res, next) => {
         // store 1 user in mongodb from authService
         const user = await authService.createUser({ name, email, password });
        
-        return res.status(200).json(new ResponseWrapper('Register Successfully!', user, null, null));
+        return res.status(200).json(new ResponseWrapper('Đăng ký thành công!', user, null, null));
 
     } catch (error) {
         next(error);
@@ -52,7 +52,7 @@ exports.login = async (req, res, next) => {
             accessTokenUser,
             refreshTokenUser
         };
-        return res.status(200).json(new ResponseWrapper('Login successfully!', data, null, null));
+        return res.status(200).json(new ResponseWrapper('Đăng nhập thành công!', data, null, null));
 
     } catch (error) {
         next(error);
@@ -71,7 +71,7 @@ exports.logout = async (req, res, next) => {
             if(err){
                 throw createError.InternalServerError();
             } 
-            return res.status(200).json(new ResponseWrapper('Logout Successfully!', null, null, null));
+            return res.status(200).json(new ResponseWrapper('Bạn vừa đăng xuất!', null, null, null));
         });
     } catch (error) {
         next(error);
@@ -92,7 +92,7 @@ exports.refreshToken = async (req, res, next) => {
             accessTokenUser,
             refreshTokenUser
         }
-        return res.status(200).json(new ResponseWrapper('RefreshToken successfully!', data, null, null));
+        return res.status(200).json(new ResponseWrapper('Làm mới token thành công!', data, null, null));
     } catch (error) {
         next(error);
     }

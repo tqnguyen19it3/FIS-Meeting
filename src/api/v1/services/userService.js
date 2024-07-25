@@ -4,7 +4,7 @@ const userModel = require('../models/userModel');
 const getUserById = async (id) => {
     const user = await userModel.findById(id).select('-password');
     if (!user) {
-        throw createError.NotFound('This user could not be found!');
+        throw createError.NotFound('Không tìm thấy người dùng này!');
     }
     return user;
 }

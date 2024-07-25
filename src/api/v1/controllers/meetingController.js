@@ -9,7 +9,7 @@ exports.allMeeting = async (req, res, next) => {
         const meetings = await meetingService.getAllMeeting();
         // Assume pagination
         const pagination = new Pagination(1, 10, meetings.length);
-        return res.status(200).json(new ResponseWrapper('Get meeting list successfully!', meetings, null, pagination));
+        return res.status(200).json(new ResponseWrapper('Lấy danh sách cuộc họp thành công!', meetings, null, pagination));
     } catch (error) {
         next(error);
     }
@@ -22,7 +22,20 @@ exports.allMeetingByWeek = async (req, res, next) => {
         const meetings = await meetingService.getMeetingByWeek(startDate, endDate);
         // Assume pagination
         const pagination = new Pagination(1, 10, meetings.length);
-        return res.status(200).json(new ResponseWrapper('Get meeting list successfully!', meetings, null, pagination));
+        return res.status(200).json(new ResponseWrapper('Lấy danh sách cuộc họp thành công!', meetings, null, pagination));
+    } catch (error) {
+        next(error);
+    }
+}
+
+// [GET] / get meeting list by day
+exports.allMeetingByDay = async (req, res, next) => {
+    try {
+        const date = req.query.date;
+        const meetings = await meetingService.getMeetingByDay(date);
+        // Assume pagination
+        const pagination = new Pagination(1, 10, meetings.length);
+        return res.status(200).json(new ResponseWrapper('Lấy danh sách cuộc họp thành công!', meetings, null, pagination));
     } catch (error) {
         next(error);
     }
@@ -32,7 +45,7 @@ exports.allMeetingByWeek = async (req, res, next) => {
 exports.getMeetingById = async (req, res, next) => {
     try {
         const meeting = await meetingService.getMeetingById(req.params.id);
-        return res.status(200).json(new ResponseWrapper('Get meeting by ID successfully!', meeting, null, null));
+        return res.status(200).json(new ResponseWrapper('Lấy chi tiết cuộc họp thành công!', meeting, null, null));
     } catch (error) {
         next(error);
     }
@@ -50,7 +63,7 @@ exports.saveMeeting = async (req, res, next) => {
         // store 1 meeting in mongodb from Service
         const meeting = await meetingService.createMeeting(req.payload._id, { ...req.body });
        
-        return res.status(200).json(new ResponseWrapper('Create meeting Successfully!', meeting, null, null));
+        return res.status(200).json(new ResponseWrapper('Tạo cuộc họp thành công!', meeting, null, null));
 
     } catch (error) {
         next(error);
@@ -70,7 +83,7 @@ exports.createMeetingWithParticipants = async (req, res, next) => {
         const author = '668f944bdfdf1423c659106d'; //admin
         const meetingWithParticipants = await meetingService.createMeetingWithParticipants(author, meetingData, participantIDs);
 
-        return res.status(200).json(new ResponseWrapper('Create meeting Successfully!', meetingWithParticipants, null, null));
+        return res.status(200).json(new ResponseWrapper('Tạo cuộc họp thành công!', meetingWithParticipants, null, null));
 
     } catch (error) {
         next(error);
@@ -88,7 +101,7 @@ exports.updateStateMeeting = async (req, res, next) => {
         }
         // update state a meeting in mongodb from Service
         const response = await meetingService.updateStateMeeting(req.params.id, newStatus);
-        return res.status(200).json(new ResponseWrapper('Update meeting state successfully!', response, null, null));
+        return res.status(200).json(new ResponseWrapper('Cập nhật trạng thái cuộc họp thành công!', response, null, null));
     } catch (err) {
         next(err);
     }
@@ -104,7 +117,7 @@ exports.updateMeeting = async (req, res, next) => {
         // update a meeting in mongodb from Service
         const response = await meetingService.updateMeeting(req.params.id, req.body);
 
-        return res.status(200).json(new ResponseWrapper('Update meeting successfully!', response, null, null));
+        return res.status(200).json(new ResponseWrapper('Cập nhật cuộc họp thành công!', response, null, null));
     } catch (error) {
         next(error);
     }
@@ -115,7 +128,7 @@ exports.softDelMeeting = async (req, res, next) => {
     try {
         await meetingService.softDeleteMeeting(req.params.id);
 
-        return res.status(200).json(new ResponseWrapper('Move the meeting to the trash successfully!', null, null, null));
+        return res.status(200).json(new ResponseWrapper('Cuộc họp đã được đưa vào thùng rác!', null, null, null));
     } catch (err) {
         next(err);
     }
@@ -127,7 +140,7 @@ exports.trashMeeting = async (req, res, next) => {
         const meets = await meetingService.getSoftDelMeeting();
         // Assume pagination
         const pagination = new Pagination(1, 10, meets.length);
-        return res.status(200).json(new ResponseWrapper('Get meeting list from trash successfully!', meets, null, pagination));
+        return res.status(200).json(new ResponseWrapper('Lấy danh sách cuộc họp trong thùng rác thành công!', meets, null, pagination));
     } catch (error) {
         next(error);
     }
@@ -139,7 +152,7 @@ exports.restoreMeeting = async (req, res, next) => {
         // update deleted field = false in mongodb from Service
         const response = await meetingService.restoreMeeting(req.params.id);
 
-        return res.status(200).json(new ResponseWrapper('Restore the meeting from the trash successfully!', response, null, null));
+        return res.status(200).json(new ResponseWrapper('Khôi phục thành công cuộc họp!', response, null, null));
     } catch (err) {
         next(err);
     }
@@ -150,7 +163,7 @@ exports.destroyMeeting = async (req, res, next) => {
     try {
         await meetingService.destroyMeeting(req.params.id);
 
-        return res.status(200).json(new ResponseWrapper('Destroy the meeting from trash successfully!', null, null, null));
+        return res.status(200).json(new ResponseWrapper('Xóa thành công cuộc họp!', null, null, null));
     } catch (err) {
         next(err);
     }

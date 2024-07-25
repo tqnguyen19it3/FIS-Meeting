@@ -25,52 +25,52 @@ const sendMailToMetingParticipant = async (toMail, meetingInfo, subject, html) =
         const emailContent = {
             body: {
                 email: toMail,
-                intro: "You have been invited to a meeting. Here are the details",
+                intro: "Bạn đã được mời đến một cuộc họp. Đây là những thông tin chi tiết",
                 table: {
                     data: [
                         {
-                            key: 'Meeting Name',
+                            key: 'Tên cuộc họp',
                             value: meetingInfo.meetingName
                         },
                         {
-                            key: 'Description',
+                            key: 'Mô tả',
                             value: meetingInfo.description
                         },
                         {
-                            key: 'Department',
-                            value: meetingInfo.department
-                        },
-                        {
-                            key: 'Start Time',
-                            value: meetingInfo.startTime
-                        },
-                        {
-                            key: 'End Time',
-                            value: meetingInfo.endTime
-                        },
-                        {
-                            key: 'Status',
-                            value: meetingInfo.status
-                        },
-                        {
-                            key: 'Create by',
+                            key: 'Được tạo bởi',
                             value: meetingInfo.userId.email
                         },
                         {
-                            key: 'Room Name',
+                            key: 'Phòng ban',
+                            value: meetingInfo.department
+                        },
+                        {
+                            key: 'Thời gian bắt đầu',
+                            value: meetingInfo.startTime
+                        },
+                        {
+                            key: 'Thời gian kết thúc',
+                            value: meetingInfo.endTime
+                        },
+                        {
+                            key: 'Trạng thái',
+                            value: meetingInfo.status
+                        },
+                        {
+                            key: 'Phòng họp',
                             value: meetingInfo.roomId.roomName
                         },
                         {
-                            key: 'Capacity',
+                            key: 'Sức chứa',
                             value: meetingInfo.roomId.capacity
                         },
                         {
-                            key: 'Location',
+                            key: 'Vị trí',
                             value: meetingInfo.roomId.location
                         }
                     ]
                 },
-                outro: "If you are not interested, please ignore this email",
+                outro: "Nếu bạn không quan tâm, vui lòng bỏ qua email này",
             },
         };
     

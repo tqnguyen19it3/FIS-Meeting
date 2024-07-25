@@ -4,7 +4,7 @@ const slug = require('mongoose-slug-updater');
 const mongooseDelete = require('mongoose-delete');
 
 const meetingRoomSchema = new Schema({
-    roomName: { type: String, required: [true, "Please provide a room name!"] },
+    roomName: { type: String, required: [true, "Vui lòng cung cấp tên phòng!"] },
     slug: { type: String, slug: 'roomName', unique: true },
     capacity: { type: Number, required: true },
     location: { type: String, required: true },
