@@ -26,6 +26,7 @@ router.post('/create-meeting-with-participants',  meetingController.createMeetin
 router.get('/get-meeting-list', meetingController.allMeeting);
 router.get('/get-meeting-list-by-week', meetingController.allMeetingByWeek);
 router.get('/get-meeting-list-by-day', meetingController.allMeetingByDay);
+router.get('/get-available-meeting-times-during-day', meetingController.allAvailableMeetingTime);
 router.get('/get-meeting/:id', meetingController.getMeetingById);
 router.patch('/update-state-meeting/:id', meetingController.updateStateMeeting);
 router.put('/update-meeting/:id', meetingController.updateMeeting);

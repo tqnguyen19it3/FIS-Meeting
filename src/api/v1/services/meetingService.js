@@ -5,6 +5,7 @@ const meetingRoomService = require('../services/meetingRoomService');
 const userService = require('../services/userService');
 const meetingParticipantModel = require('../models/meetingParticipantModel');
 const { sendMailToMetingParticipant } = require('../helpers/sendMail');
+const calculateAvailableTimes = require('../utils/calculateAvailableTimes');
 
 
 const addParticipantsToTheMeeting = async (meetingId, participantIDs) => {
@@ -21,6 +22,7 @@ const addParticipantsToTheMeeting = async (meetingId, participantIDs) => {
 
     await Promise.all(participantPromises);
 }
+
 
 const getMeetingById = async (id) => {
     const meeting = await meetingModel.findById(id)
@@ -70,6 +72,32 @@ const getMeetingByDay = async (date) => {
     }).sort({ startTime: 1 });
 
     return meetings;
+};
+
+const getAvailableMeetingTime = async (date) => {
+    // Truy vấn các cuộc họp trong ngày cụ thể
+    const meetings = await getMeetingByDay(date);
+    // Xác định giờ làm việc trong ngày
+    const workingHoursStart = moment(date).hour(9).minute(0).second(0).millisecond(0).toDate();
+    const workingHoursEnd = moment(date).hour(18).minute(0).second(0).millisecond(0).toDate();
+    if (meetings.length === 0) {
+        // Trả về mảng có một phần tử nếu không có cuộc họp nào
+        return [{
+            start: workingHoursStart,
+            end: workingHoursEnd,
+            duration: moment(workingHoursEnd).diff(moment(workingHoursStart), 'hours')
+        }];
+    }
+       
+    const occupiedTimes = meetings.map((meeting) => ({
+        startTime: meeting.startTime,
+        endTime: meeting.endTime,
+    }));
+
+    const availableMeetingTimes = calculateAvailableTimes(occupiedTimes, workingHoursStart, workingHoursEnd);
+    
+
+    return availableMeetingTimes;
 };
 
 //create meeting without participants
@@ -193,5 +221,6 @@ module.exports = {
     destroyMeeting,
     getMeetingById,
     getMeetingByWeek,
-    getMeetingByDay
+    getMeetingByDay,
+    getAvailableMeetingTime
 }

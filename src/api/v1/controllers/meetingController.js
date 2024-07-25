@@ -41,6 +41,17 @@ exports.allMeetingByDay = async (req, res, next) => {
     }
 }
 
+// [GET] / get available meeting times during the day
+exports.allAvailableMeetingTime = async (req, res, next) => {
+    try {
+        const date = req.query.date;
+        const availableMeetingTimes = await meetingService.getAvailableMeetingTime(date);
+        return res.status(200).json(new ResponseWrapper('Lấy thời gian họp có sẵn trong ngày thành công!', availableMeetingTimes , null, null));
+    } catch (error) {
+        next(error);
+    }
+}
+
 // [GET] / get meeting by id
 exports.getMeetingById = async (req, res, next) => {
     try {
