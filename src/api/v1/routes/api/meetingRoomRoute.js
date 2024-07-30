@@ -25,7 +25,7 @@ router.get('/get-meeting-room/:id', meetingRoomController.getMeetingRoomById);
 router.patch('/update-state-meeting-room/:id', meetingRoomController.updateStateMeetingRoom);
 router.put('/update-meeting-room/:id', meetingRoomController.updateMeetingRoom);
 router.delete('/soft-delete-meeting-room/:id', meetingRoomController.softDelMeetingRoom);
-router.get('/trash-meeting-room', [authMiddlewares.isAuthentication], meetingRoomController.trashMeetingRoom);
+router.get('/trash-meeting-room', meetingRoomController.trashMeetingRoom);
 router.patch('/restore-meeting-room/:id', meetingRoomController.restoreMeetingRoom);
 router.delete('/destroy-meeting-room/:id', meetingRoomController.destroyMeetingRoom);
 

@@ -28,6 +28,19 @@ exports.allMeetingByWeek = async (req, res, next) => {
     }
 }
 
+// [GET] / get meeting list by week
+exports.allMeetingByWeekAndRoom = async (req, res, next) => {
+    try {
+        const { roomId, startDate, endDate } = req.query;
+        const meetings = await meetingService.getMeetingByWeekAndRoom(roomId, startDate, endDate);
+        // Assume pagination
+        const pagination = new Pagination(1, 10, meetings.length);
+        return res.status(200).json(new ResponseWrapper('Lấy danh sách cuộc họp thành công!', meetings, null, pagination));
+    } catch (error) {
+        next(error);
+    }
+}
+
 // [GET] / get meeting list by day
 exports.allMeetingByDay = async (req, res, next) => {
     try {
@@ -44,8 +57,8 @@ exports.allMeetingByDay = async (req, res, next) => {
 // [GET] / get available meeting times during the day
 exports.allAvailableMeetingTime = async (req, res, next) => {
     try {
-        const date = req.query.date;
-        const availableMeetingTimes = await meetingService.getAvailableMeetingTime(date);
+        const {roomId, date} = req.query;
+        const availableMeetingTimes = await meetingService.getAvailableMeetingTime(roomId, date);
         return res.status(200).json(new ResponseWrapper('Lấy thời gian họp có sẵn trong ngày thành công!', availableMeetingTimes , null, null));
     } catch (error) {
         next(error);
@@ -160,7 +173,6 @@ exports.trashMeeting = async (req, res, next) => {
 // [PATCH] / Restore Meeting from trash
 exports.restoreMeeting = async (req, res, next) => {
     try {
-        // update deleted field = false in mongodb from Service
         const response = await meetingService.restoreMeeting(req.params.id);
 
         return res.status(200).json(new ResponseWrapper('Khôi phục thành công cuộc họp!', response, null, null));

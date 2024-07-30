@@ -15,7 +15,7 @@ const DBConnectionString = process.env.DB_CONNECTION_STRING;
 connectMongoDB(DBConnectionString);
 
 
-//handle cors error
+//---------------- HANDLE CORS ERROR ----------------
 app.use(cors());
 
 
@@ -36,6 +36,6 @@ app.use(errorHandler);
 
 
 //---------------- CHECK SERVER START ----------------
-const server = app.listen(PORT , () => {
+app.listen(PORT , () => {
     console.log(`Listening on port ${PORT}`);
 })

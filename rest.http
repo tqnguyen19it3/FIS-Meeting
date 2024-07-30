@@ -130,7 +130,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0Y
 -------------------------------------------------------------------------------------------------
 
 ### GET LIST MEETING
-GET http://localhost:3030/api/v1/meeting/get-       
+GET http://localhost:3030/api/v1/meeting/get-meeting-list
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTM1NjMyMSwiZXhwIjoxNzIxMzY2MzIxfQ.9oIjMY40j1-MrYfuIVYdHu6GnyR-wt5Cv4S8TO5qyes
 
 
@@ -144,13 +144,18 @@ GET http://localhost:3030/api/v1/meeting/get-meeting-list-by-week?startDate=2024
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTM1NjMyMSwiZXhwIjoxNzIxMzY2MzIxfQ.9oIjMY40j1-MrYfuIVYdHu6GnyR-wt5Cv4S8TO5qyes
 
 
-### GET MEETING BY DAY
-GET http://localhost:3030/api/v1/meeting/get-meeting-list-by-day?date=2024-07-26T00:00:00.000Z
+### GET MEETING BY WEEK AND ROOM
+GET http://localhost:3030/api/v1/meeting/get-meeting-list-by-week-and-room?startDate=2024-07-22T00:00:00.000Z&endDate=2024-07-28T00:00:00.000Z&roomId=669097dac08685adafcbc0bf
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTM1NjMyMSwiZXhwIjoxNzIxMzY2MzIxfQ.9oIjMY40j1-MrYfuIVYdHu6GnyR-wt5Cv4S8TO5qyes
 
 
 ### GET MEETING BY DAY
-GET http://localhost:3030/api/v1/meeting/get-available-meeting-times-during-day?date=2024-07-24T00:00:00.000Z
+GET http://localhost:3030/api/v1/meeting/get-meeting-list-by-day?date=2024-07-23T00:00:00.000Z
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTM1NjMyMSwiZXhwIjoxNzIxMzY2MzIxfQ.9oIjMY40j1-MrYfuIVYdHu6GnyR-wt5Cv4S8TO5qyes
+
+
+### GET MEETING BY DAY
+GET http://localhost:3030/api/v1/meeting/get-available-meeting-times-during-day?date=2024-07-26T00:00:00.000Z&roomId=668fb3bfb87bf2a9f328277c
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0YmRmZGYxNDIzYzY1OTEwNmQiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImVtYWlsIjoiYWRtaW5AZnB0LmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyMTM1NjMyMSwiZXhwIjoxNzIxMzY2MzIxfQ.9oIjMY40j1-MrYfuIVYdHu6GnyR-wt5Cv4S8TO5qyes
 
 
@@ -163,9 +168,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhmOTQ0Y
     "meetingName": "meetingName",
     "description": "description",
     "department": "department",
-    "startTime": "2024-07-19T07:00:00Z",
-    "endTime": "2024-07-19T10:00:00Z",
-    "status": "completed",
+    "startTime": "2024-07-23T15:00:00Z",
+    "endTime": "2024-07-23T17:00:00Z",
+    "status": "scheduled",
     "roomId": "668fb301b87bf2a9f3282779"
 }
 

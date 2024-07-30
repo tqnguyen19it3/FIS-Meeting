@@ -16,7 +16,6 @@ const getAllMeetingRoom = async () => {
 };
 
 const createMeetingRoom = async ({ roomName, capacity, location, status }) => {
-    // store 1 room in mongodb
     const meetingRoom = await meetingRoomModel.create({
         roomName, capacity, location, status
     });
@@ -25,34 +24,27 @@ const createMeetingRoom = async ({ roomName, capacity, location, status }) => {
 };
 
 const updateStateMeetingRoom = async (id, newStatus) => {
-    // check room exits
     if(await getMeetingRoomById(id)){
-    // update state 1 room in mongodb
         const rs = await meetingRoomModel.findByIdAndUpdate(id, { status: newStatus }, { new: true });
         return rs;
     }
 };
 
 const updateMeetingRoom = async (id, data) => {
-    // check room exits
     if(await getMeetingRoomById(id)){
-        // update a meeting room in mongodb
         const rs = await meetingRoomModel.findOneAndUpdate({_id: id}, data, { new: true });
         return rs;
     }
 };
 
 const softDeleteMeetingRoom = async (id) => {
-    // check room exits
     if(await getMeetingRoomById(id)){
-        // move a meeting room to trash
         await meetingRoomModel.delete({ _id: id });
     }
    
 };
 
 const getSoftDelMeetingRoom = async () => {
-    // chỉ lấy các room nằm trong thùng rác
     const rooms = await meetingRoomModel.findWithDeleted({deleted:true})
     return rooms;
 };
@@ -68,12 +60,10 @@ const restoreMeetingRoom = async (id) => {
 };
 
 const destroyMeetingRoom = async (id) => {
-    // check room exits
     const room = await meetingRoomModel.findOneWithDeleted({ _id: id, deleted: true });
     if (!room) {
         throw createError.NotFound('Không tìm thấy phòng họp này trong thùng rác!');
     }
-    // destroy
     await meetingRoomModel.findOneAndDelete({ _id: id });
 };
 

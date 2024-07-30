@@ -1,9 +1,9 @@
 const createError = require('http-errors');
 const moment = require('moment');
 const meetingModel = require('../models/meetingModel');
+const meetingParticipantModel = require('../models/meetingParticipantModel');
 const meetingRoomService = require('../services/meetingRoomService');
 const userService = require('../services/userService');
-const meetingParticipantModel = require('../models/meetingParticipantModel');
 const { sendMailToMetingParticipant } = require('../helpers/sendMail');
 const calculateAvailableTimes = require('../utils/calculateAvailableTimes');
 
@@ -55,7 +55,21 @@ const getMeetingByWeek = async (startDate, endDate) => {
         $or: [
             { startTime: { $gte: startDate, $lte: endDate } },  // Cuộc họp bắt đầu trong khoảng thời gian
             { endTime: { $gte: startDate, $lte: endDate } },    // Cuộc họp kết thúc trong khoảng thời gian
-            { startTime: { $lte: startDate }, endTime: { $gte: endDate } }  // Cuộc họp bao trùm toàn bộ khoảng thời gian
+            { startTime: { $lte: startDate }, endTime: { $gte: endDate } }  // Cuộc họp bao trùm toàn bộ khoảng thời gian (duration)
+        ]
+    }).sort({ startTime: 1 });
+
+    return meetings;
+};
+
+const getMeetingByWeekAndRoom = async (roomId, startDate, endDate) => {
+    // Truy vấn các cuộc họp trong khoảng thời gian cụ thể
+    const meetings = await meetingModel.find({
+        roomId: roomId,
+        $or: [
+            { startTime: { $gte: startDate, $lte: endDate } },  // Cuộc họp bắt đầu trong khoảng thời gian
+            { endTime: { $gte: startDate, $lte: endDate } },    // Cuộc họp kết thúc trong khoảng thời gian
+            { startTime: { $lte: startDate }, endTime: { $gte: endDate } }  // Cuộc họp bao trùm toàn bộ khoảng thời gian (duration)
         ]
     }).sort({ startTime: 1 });
 
@@ -74,15 +88,29 @@ const getMeetingByDay = async (date) => {
     return meetings;
 };
 
-const getAvailableMeetingTime = async (date) => {
+const getMeetingByDayAndRoom = async (roomId, date) => {
+    // Truy vấn các cuộc họp trong ngày cụ thể và phòng cụ thể
+    const startOfDay = moment(date).startOf('day').toDate();
+    const endOfDay = moment(date).endOf('day').toDate();
+
+    const meetings = await meetingModel.find({
+      roomId: roomId,
+      startTime: { $gte: startOfDay, $lte: endOfDay }
+    }).sort({ startTime: 1 });
+
+    return meetings;
+};
+
+const getAvailableMeetingTime = async (roomId, date) => {
     // Truy vấn các cuộc họp trong ngày cụ thể
-    const meetings = await getMeetingByDay(date);
+    const meetings = await getMeetingByDayAndRoom(roomId, date);
     // Xác định giờ làm việc trong ngày
     const workingHoursStart = moment(date).hour(9).minute(0).second(0).millisecond(0).toDate();
     const workingHoursEnd = moment(date).hour(18).minute(0).second(0).millisecond(0).toDate();
     if (meetings.length === 0) {
         // Trả về mảng có một phần tử nếu không có cuộc họp nào
         return [{
+            roomId,
             start: workingHoursStart,
             end: workingHoursEnd,
             duration: moment(workingHoursEnd).diff(moment(workingHoursStart), 'hours')
@@ -95,10 +123,10 @@ const getAvailableMeetingTime = async (date) => {
     }));
 
     const availableMeetingTimes = calculateAvailableTimes(occupiedTimes, workingHoursStart, workingHoursEnd);
-    
 
     return availableMeetingTimes;
 };
+
 
 //create meeting without participants
 const createMeeting = async (authorId, data) => {
@@ -108,7 +136,7 @@ const createMeeting = async (authorId, data) => {
     if(meetingRoom.status && author){
         // Truy vấn các cuộc họp khác trong cùng phòng họp có xung đột thời gian
         const conflictingMeetings = await meetingModel.find({
-            // roomId: data.roomId, //phong hop
+            roomId: data.roomId, //phong hop
             $or: [ //time
                 { startTime: { $lt: data.endTime, $gt: data.startTime } },
                 { endTime: { $lt: data.endTime, $gt: data.startTime } },
@@ -160,31 +188,25 @@ const createMeetingWithParticipants = async (userId, meetingData, participantIDs
 
 const updateStateMeeting = async (id, newStatus) => {
     if(await getMeetingById(id)){
-        // update state 1 meeting in mongodb
         const rs = await meetingModel.findByIdAndUpdate(id, { status: newStatus }, { new: true });
         return rs;
     }
 };
 
 const updateMeeting = async (id, data) => {
-    // check meeting exits
     if(await getMeetingById(id) && await meetingRoomService.getMeetingRoomById(data.roomId)){
-        // update a meeting in mongodb
         const rs = await meetingModel.findOneAndUpdate({_id: id}, data, { new: true });
         return rs;
     }
 };
 
 const softDeleteMeeting = async (id) => {
-    // check meeting exits
     if(await getMeetingById(id)){
-        // move a meeting to trash
         await meetingModel.delete({ _id: id });
     }
 };
 
 const getSoftDelMeeting = async () => {
-    // chỉ lấy các meet nằm trong thùng rác
     const meets = await meetingModel.findWithDeleted({deleted:true})
     return meets;
 };
@@ -200,12 +222,10 @@ const restoreMeeting = async (id) => {
 };
 
 const destroyMeeting = async (id) => {
-    // check meeting exits
     const meeting = await meetingModel.findOneWithDeleted({ _id: id, deleted: true });
     if (!meeting) {
         throw createError.NotFound('Không tìm thấy cuộc họp này trong thùng rác!');
     }
-    // destroy
     await meetingModel.findOneAndDelete({ _id: id });
 };
 
@@ -221,6 +241,8 @@ module.exports = {
     destroyMeeting,
     getMeetingById,
     getMeetingByWeek,
+    getMeetingByWeekAndRoom,
     getMeetingByDay,
+    getMeetingByDayAndRoom,
     getAvailableMeetingTime
 }

@@ -20,13 +20,13 @@ const meetingValidate = (data) => {
         startTime: Joi.date().iso().greater('now').required().messages({
             'date.base': `Thời gian bắt đầu phải là một ngày hợp lệ`,
             'date.format': `Thời gian bắt đầu phải ở định dạng ISO`,
-            'date.greater': `Thời gian bắt đầu phải lớn hơn thời gian hiện tại`,
+            'date.greater': `Thời gian bắt đầu là bắt buộc và phải lớn hơn thời gian hiện tại`,
             'any.required': `Thời gian bắt đầu là bắt buộc`
         }),
         endTime: Joi.date().iso().greater(Joi.ref('startTime')).required().messages({
             'date.base': `Thời gian kết thúc phải là một ngày hợp lệ`,
             'date.format': `Thời gian kết thúc phải ở định dạng ISO`,
-            'date.greater': `Thời gian kết thúc phải lớn hơn thời gian bắt đầu`,
+            'date.greater': `Vui lòng chọn đủ thông tin thời gian cho cuộc họp`,
             'any.required': `Thời gian kết thúc là bắt buộc`
         }),
         status: Joi.string().valid('scheduled', 'ongoing', 'completed', 'cancelled').required().messages({
@@ -37,7 +37,7 @@ const meetingValidate = (data) => {
         roomId: Joi.string().required().messages({
             'string.base': `Phòng họp phải là một loại văn bản`,
             'string.empty': `Phòng họp không thể là trường trống`,
-            'any.required': `Phòng họp là bắt buộc`
+            'any.required': `Phòng họp là bắt buộc, bạn cần chọn phòng họp`
         })
     });
     return meetingSchema.validate(data);
